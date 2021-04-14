@@ -7,9 +7,11 @@ repositories {
 }
 
 def junitVersion = "5.7.0"
+def appiumVersion = "7.3.0"
 
 dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testImplementation "io.appium:java-client:${appiumVersion}"
 
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
