@@ -19,4 +19,8 @@ public class ConfigHelper {
     public static String getSelenoidUrl() {
         return getMobileConfig().selenoidUrl();
     }
+
+    public static String getSelenoidVideo() {
+        return getMobileConfig().selenoidVideo();
+    }
 }

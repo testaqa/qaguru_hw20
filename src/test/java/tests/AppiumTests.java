@@ -12,7 +12,7 @@ import static io.appium.java_client.MobileBy.AccessibilityId;
 public class AppiumTests extends BaseTest{
 
     @Test
-    void searchWikiOnEmulator() {
+    void searchWiki() {
 
         $(MobileBy.id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click();
         $(AccessibilityId("Search Wikipedia")).click();

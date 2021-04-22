@@ -14,4 +14,7 @@ public interface MobileConfig extends Config {
 
     @Config.Key("selenoid.url")
     String selenoidUrl();
+
+    @Config.Key("selenoid.video")
+    String selenoidVideo();
 }
