@@ -11,4 +11,7 @@ public interface MobileConfig extends Config {
 
     @Config.Key("browserstack.key")
     String browserstackKey();
+
+    @Config.Key("selenoid.url")
+    String selenoidUrl();
 }

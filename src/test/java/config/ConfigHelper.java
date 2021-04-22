@@ -15,4 +15,8 @@ public class ConfigHelper {
     public static String getBrowserstackKey() {
         return getMobileConfig().browserstackKey();
     }
+
+    public static String getSelenoidUrl() {
+        return getMobileConfig().selenoidUrl();
+    }
 }
