@@ -1,16 +1,17 @@
 package drivers;
 
+import com.codeborne.selenide.WebDriverProvider;
 import config.ConfigHelper;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class BrowserstackAppiumDriver {
-    public AndroidDriver<AndroidElement> createDriver() {
-        DesiredCapabilities caps = new DesiredCapabilities();
+public class BrowserstackAppiumDriver implements WebDriverProvider {
+    @Override
+    public WebDriver createDriver(DesiredCapabilities caps) {
 
         // Set your access credentials
         caps.setCapability("browserstack.user", ConfigHelper.getBrowserstackUser());
@@ -29,7 +30,7 @@ public class BrowserstackAppiumDriver {
         caps.setCapability("name", "Search wiki on browserstack test");
 
         // Initialize WebDriver
-        return new AndroidDriver<AndroidElement>(getUrl(), caps);
+        return new AndroidDriver<>(getUrl(), caps);
     }
 
     public static URL getUrl() {

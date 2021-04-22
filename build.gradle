@@ -9,11 +9,13 @@ repositories {
 def junitVersion = "5.7.0"
 def appiumVersion = "7.3.0"
 def ownerVersion = "1.0.12"
+def selenideVersion = "5.19.0"
 
 dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testImplementation "io.appium:java-client:${appiumVersion}"
     testImplementation "org.aeonbits.owner:owner:${ownerVersion}"
+    testImplementation "com.codeborne:selenide:${selenideVersion}"
 
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }

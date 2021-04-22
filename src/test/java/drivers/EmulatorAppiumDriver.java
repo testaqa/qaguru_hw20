@@ -1,19 +1,20 @@
 package drivers;
 
+import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class EmulatorAppiumDriver {
-    public AndroidDriver<AndroidElement> createDriver() {
-        DesiredCapabilities caps = new DesiredCapabilities();
+public class EmulatorAppiumDriver implements WebDriverProvider {
+    @Override
+    public WebDriver createDriver(DesiredCapabilities caps) {
 
         // Device id from 'adb devices'
-        caps.setCapability("udid", "emulator-5556");
+        caps.setCapability("udid", "emulator-5554");
 
         // Install and interact with app
         caps.setCapability("app", new File("src/test/resources/apps/app-alpha-universal-release.apk").getAbsolutePath());
@@ -30,7 +31,7 @@ public class EmulatorAppiumDriver {
         caps.setCapability("language", "en");
 
         // Initialize WebDriver
-        return new AndroidDriver<AndroidElement>(getUrl(), caps);
+        return new AndroidDriver<>(getUrl(), caps);
     }
 
     public static URL getUrl() {

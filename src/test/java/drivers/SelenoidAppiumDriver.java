@@ -1,18 +1,18 @@
 package drivers;
 
+import com.codeborne.selenide.WebDriverProvider;
 import config.ConfigHelper;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 
-public class SelenoidAppiumDriver {
-    public AndroidDriver<AndroidElement> createDriver() {
-
-        DesiredCapabilities caps = new DesiredCapabilities();
+public class SelenoidAppiumDriver implements WebDriverProvider {
+    @Override
+    public WebDriver createDriver(DesiredCapabilities caps) {
 
         // Selenoid options
         caps.setCapability("selenoid:options", Map.<String, Object>of(
@@ -33,7 +33,7 @@ public class SelenoidAppiumDriver {
         caps.setCapability("locale", "en");
         caps.setCapability("language", "en");
 
-        return new AndroidDriver<AndroidElement>(getUrl(), caps);
+        return new AndroidDriver<>(getUrl(), caps);
     }
 
     public static URL getUrl() {
