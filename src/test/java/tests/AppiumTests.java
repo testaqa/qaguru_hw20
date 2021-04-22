@@ -1,6 +1,7 @@
 package tests;
 
 import config.ConfigHelper;
+import drivers.DriverHelper;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -8,45 +9,15 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class SelenoidTests {
+public class AppiumTests extends BaseTest{
 
     @Test
-    void searchWikiOnEmulator() throws MalformedURLException {
-
-        DesiredCapabilities caps = new DesiredCapabilities();
-
-        // Selenoid options
-        caps.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true));
-
-        // Install and interact with app
-        caps.setCapability("app", new URL("https://github.com/wikimedia/apps-android-wikipedia/releases/download/untagged-4569c2d6deed0da37be2/app-alpha-universal-release.apk"));
-        caps.setCapability("appPackage", "org.wikipedia.alpha");
-        caps.setCapability("appActivity", "org.wikipedia.main.MainActivity");
-
-        // Other capabilities
-        caps.setCapability("automationName", "Appium");
-        caps.setCapability("platformName", "Android");
-        caps.setCapability("platformVersion", "10.0");
-
-        caps.setCapability("deviceName", "android");
-
-        caps.setCapability("locale", "en");
-        caps.setCapability("language", "en");
-
-        // Initialize WebDriver
-        AndroidDriver<AndroidElement> driver = new AndroidDriver<AndroidElement>(
-                new URL(ConfigHelper.getSelenoidUrl()), caps);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        // Test steps
+    void searchWikiOnEmulator() {
 
         // Click 'Skip' button
         driver.findElement(MobileBy.id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click();
