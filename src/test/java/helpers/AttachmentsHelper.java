@@ -30,11 +30,6 @@ public class AttachmentsHelper {
 
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
     public static String attachBrowserstackVideo(String sessionId) {
-//        var test = "<html><body><video width='100%' height='100%' controls autoplay><source src='"
-//                + getBrowserstackVideoUrl(sessionId)
-//                + "' type='video/mp4'></video></body></html>";
-//
-//        return test;
         return "<html><body><video width='100%' height='100%' controls autoplay><source src='"
                 + getBrowserstackVideoUrl(sessionId)
                 + "' type='video/mp4'></video></body></html>";
